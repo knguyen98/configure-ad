@@ -1,12 +1,16 @@
 # configure-ad
+Certainly! Here's a similar passage with different content:
+
+---
+
 <p align="center">
 <img src="https://i.imgur.com/pU5A58S.png" alt="Microsoft Active Directory Logo"/>
 </p>
 
-<h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
+<h1>Deploying On-Premises Active Directory in Azure</h1>
+This tutorial guides you through setting up an on-premises Active Directory environment within Azure Virtual Machines.<br />
 
-<h2>Environments and Technologies Used</h2>
+<h2>Environments and Technologies Utilized</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
@@ -24,7 +28,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <p>
 </p>
 <p>
-In this lab we will create two VMs in the same VNET. One will be a Domain Controller, the other will be a Client machine. We will change the DC to a static IP because its offering Active Directory services to the client machine. The client machine will be joined to the domain. We will configure the DNS settings on the client machine, the client machine will use the DC as its DNS server. 
+In this lab, we'll create two VMs within the same VNET. One VM will serve as the Domain Controller, while the other will act as the Client machine. The Domain Controller's IP will be set to static since it's offering Active Directory services to the Client machine. The Client machine will then be joined to the domain, and its DNS settings will be configured to use the Domain Controller as its DNS server. 
 </p>
 <br />
 
@@ -32,7 +36,7 @@ In this lab we will create two VMs in the same VNET. One will be a Domain Contro
 <img src="https://i.imgur.com/d22FHIm.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-DC-1 has to have a static Private IP Address. Client one will connect to DC-1 to ensure connectivity we will try to ping DC-1 from Client-1. At first the ping will not work correctly. We have to enable ICMPv4 on the firewall on DC-1. Now we can ping DC-1 successfully from Client-1.
+To ensure connectivity, we'll attempt to ping the Domain Controller (DC-1) from the Client machine (Client-1). Initially, the ping may fail. To resolve this, we'll enable ICMPv4 on the firewall of DC-1, allowing successful pinging from Client-1.
 </p>
 <br />
 
@@ -41,18 +45,18 @@ DC-1 has to have a static Private IP Address. Client one will connect to DC-1 to
 </p>
 <img src="https://i.imgur.com/1lrrGPw.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
 <p>
-Now we will log back into DC-1 to install AD Users & Computers. Promote the VM to DC, setup a new forest as "mydomain.com" afterwards restart then log back into DC-1 as user: "mydomain.com\labuser". If executed properly, you should be able to run AD Users & Computers as shown below.
+Next, we'll log back into DC-1 to install Active Directory Users & Computers. After promoting the VM to a Domain Controller, setting up a new forest as "mydomain.com", and restarting, we'll log back in as "mydomain.com\labuser" to verify successful execution of AD Users & Computers.
 </p>
 <img src="https://i.imgur.com/cGjvRke.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 </p>
-We can start creating Organizational Units (OU). Let's first create an OU named _EMPLOYEES. Create another OU named _ADMINS. In order to do that, right click on the domain area. Select new->Organizational Unit and fill out the field. Then click inside of your OU and right click, select new and select user and fill out the information for your new user. The user should be named Jane Doe, she is going to be an Admin so her username will be Jane_admin. Lastly add Jane to the domain admins security group. 
+We'll proceed to create Organizational Units (OUs), starting with "_EMPLOYEES" and "_ADMINS". Additionally, we'll create a new user named Jane Doe with the username "Jane_admin", assigning her to the domain admins security group.
 </p>
 <img src="https://i.imgur.com/hL7g5Y5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 </p>
 <img src="https://i.imgur.com/kcgvzdE.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-From now on you can use Jane_admin as the administrator account. Now we will join Client-1 to the domain (mydomain.com). From the azure portal we will change client-1's DNS settings to the DC's Private IP address. After you do that restart Client-1 from within the Azure portal. Our picture below shows verification that client-1 is using DC-1 as its DNS. 
+Moving forward, we'll join Client-1 to the domain "mydomain.com" by configuring its DNS settings to use DC-1's Private IP address. Upon verification, Client-1 should be utilizing DC-1 as its DNS server.
 </p>
 <img src="https://i.imgur.com/jbrGTXW.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
@@ -60,9 +64,7 @@ From now on you can use Jane_admin as the administrator account. Now we will joi
 <img src="https://i.imgur.com/kvcm2cY.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-</p>
-<p>
-We have to join Client-1 to the domain. Navigate to your system settings and go to "About." Select Rename this PC (advanced). From there select to change the domain. Enter "mydomain.com." Enter your credentials from mydomain.com\labuser. Your computer will restart and then client-1 will be a part of mydomain.com.
+To complete the domain joining process, we'll navigate to Client-1's system settings, select "About", then "Rename this PC (advanced)", and finally change the domain to "mydomain.com". Authentication with mydomain.com\labuser credentials will complete the process.
 </p>
 <br />
 <p>
@@ -70,7 +72,7 @@ We have to join Client-1 to the domain. Navigate to your system settings and go 
 <img src="https://i.imgur.com/Ze0Em5e.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Client-1 is now a part of the domain. Now we will set up remote desktop for non-administrative users on Client-1. We have to log into Client-1 as an admin and open System Properties. Click on "Remote Desktop", allow "domain users" access to remote desktop. After completing those steps you should be able to log into Client-1 as a normal user.
+With Client-1 now part of the domain, we'll set up remote desktop access for non-administrative users. After logging into Client-1 as an admin, we'll open System Properties, navigate to "Remote Desktop", and grant "domain users" access to remote desktop.
 </p>
 <br />
 
@@ -79,7 +81,7 @@ Client-1 is now a part of the domain. Now we will set up remote desktop for non-
 <img src="https://i.imgur.com/SApOKiE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lastly to verify that normal users can RDP into Client-1, we will use a script to generate thousands of users into the domain. We will input the script in powershell. After the users are created we will select one and RDP into Client-1.
+Finally, to verify that normal users can RDP into Client-1, we'll utilize a PowerShell script to create thousands of users in the domain. After user creation, we'll select one and RDP into Client-1 using their credentials.
 </p>
 <br />
 <img src="https://i.imgur.com/EzWG8ug.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -90,5 +92,5 @@ Lastly to verify that normal users can RDP into Client-1, we will use a script t
 </p>
 <img src="https://i.imgur.com/n3gMwQV.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
 <p>
-As you can see the Powershell script created a user with the username "bab.hubo" We were able to login to Client-1 with his credentials as a normal user. 
+As demonstrated, the PowerShell script successfully created a user named "bab.hubo", with whom we were able to log into Client-1 as a normal user.
 </p>
