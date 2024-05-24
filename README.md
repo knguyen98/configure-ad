@@ -1,5 +1,3 @@
-# configure-ad
-Certainly! Here's a similar passage with different content:
 
 ---
 
